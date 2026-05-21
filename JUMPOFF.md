@@ -27,6 +27,7 @@ Current answer:
 - `src/cycle_tts/`: method implementation.
 - `scripts/`: all train/eval/scoring/aggregation runners.
 - `docs/final/`: paper-ready Markdown, tables, and figures.
+- `docs/results/`: narrative result discussion and paper-claim guidance.
 - `results/tables/`: compact result CSVs.
 - `results/scores/`: score JSONLs and summary JSONs.
 - `third_party_f5/`: F5-TTS checkout target.
@@ -34,11 +35,18 @@ Current answer:
 Not tracked:
 
 - `data/`: datasets and caches.
-- `checkpoints/`: trained model checkpoints.
+- intermediate checkpoint steps: `checkpoints/*/step*.pt`.
 - `logs/`: nohup/run logs.
 - `results/audio/`: generated wavs.
 - `results/prompts/`: derived short/noisy prompt wavs.
 - `.venv/`: Python environment.
+
+Tracked for reproducibility:
+
+- `checkpoints/*/final.pt`: final CycleAdapt adapter/model-state checkpoints.
+- `results/eval_set*.jsonl`: exact clean and stress eval splits.
+- `results/scores/`: per-item and summary metrics.
+- `results/tables/`: aggregate paper tables.
 
 ## 3. Data Needed
 
@@ -58,10 +66,49 @@ Expected local layout is under:
 
 Primary setup scripts:
 
-- `scripts/01a_download_data.sh`
 - `scripts/01a_download_hf.py`
+- `scripts/01a_download_data.sh`
 - `scripts/02_prepare_vctk_fleurs.py`
 - `scripts/03_build_manifests.py`
+
+Recommended setup on a fresh GPU box:
+
+```bash
+cd /home/ubuntu/CYCLE_TTS
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+git submodule update --init --recursive
+source scripts/env.sh
+
+# Fast HF/CDN path used by the current workspace.
+python scripts/01a_download_hf.py --datasets vctk aishell3 libritts_r fleurs
+python scripts/02_prepare_vctk_fleurs.py
+python scripts/03_build_manifests.py
+```
+
+Alternative direct-download path:
+
+```bash
+bash scripts/01a_download_data.sh
+python scripts/03_build_manifests.py
+```
+
+The HF path creates/parses:
+
+- `data/vctk_raw/` and `data/vctk_extracted/`
+- `data/aishell3_raw/`
+- `data/libritts_r/`
+- `data/fleurs/` and `data/fleurs_extracted/`
+- `data/cache/huggingface/`
+
+The direct path creates/parses:
+
+- `data/vctk/`
+- `data/aishell3/`
+- `data/libritts_r/`
+
+Do not commit these directories.  They are large and machine-local.
 
 After data prep, expected manifest files include:
 
@@ -69,6 +116,14 @@ After data prep, expected manifest files include:
 - `data/manifests/aishell3_train.jsonl`
 - `data/manifests/vctk_eval.jsonl`
 - `data/manifests/fleurs_eval.jsonl`
+
+The exact paper eval-set JSONLs are tracked and can be used directly once the
+referenced audio paths exist:
+
+- `results/eval_set.jsonl`
+- `results/eval_set_zh_expanded.jsonl`
+- `results/eval_set_zh_workshop_short3.jsonl`
+- `results/eval_set_zh_workshop_noise10.jsonl`
 
 The expanded Chinese-source eval requires FLEURS languages:
 
@@ -237,6 +292,34 @@ Noisy 10 dB zero-shot:
 This is the best workshop claim: CycleAdapt is useful when prompt quality is
 fragile.
 
+### 6.4 Where The Model Weights Are
+
+Final learned weights are tracked:
+
+- `checkpoints/cycleadapt_v1/final.pt`
+- `checkpoints/cycleadapt_v2/final.pt`
+- `checkpoints/cycleadapt_emnlp_v3/final.pt`
+- `checkpoints/cycleadapt_emnlp_v3_fixed/final.pt`
+- `checkpoints/proto_B4M5/final.pt`
+- `checkpoints/proto_M3/final.pt`
+- `checkpoints/proto_speed/final.pt`
+- `checkpoints/proto_speed2/final.pt`
+
+The paper runs mainly use:
+
+```bash
+checkpoints/cycleadapt_emnlp_v3_fixed/final.pt
+```
+
+The v3 fixed run warm-started from:
+
+```bash
+checkpoints/cycleadapt_v2/final.pt
+```
+
+Intermediate `step*.pt` checkpoints remain untracked because they are not needed
+to reproduce evaluation and mostly duplicate the final checkpoint state.
+
 ## 7. What Kind of Paper?
 
 Current best target: strong workshop paper.
@@ -265,6 +348,9 @@ Highest-value next steps:
 
 Do not spend first effort on more random averages.  The result is already clear:
 adaptation helps under fragile prompts; intelligibility is the bottleneck.
+
+Also read `docs/results/` before writing.  It contains the compact argument for
+clean results, stress results, failure buckets, limitations, and artifact usage.
 
 ## 9. Command Cheat Sheet
 
@@ -311,7 +397,7 @@ python scripts/17_make_final_materials.py
 Do not commit:
 
 - `data/`
-- `checkpoints/`
+- `checkpoints/*/step*.pt`
 - `logs/`
 - `results/audio/`
 - `results/prompts/`
@@ -319,5 +405,5 @@ Do not commit:
 - Hugging Face caches
 - generated wavs
 
-The repo should contain code, scripts, compact score/table artifacts, and
-paper-ready docs only.
+The repo should contain code, scripts, final checkpoints, eval-set JSONLs,
+compact score/table artifacts, and paper-ready docs only.

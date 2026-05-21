@@ -2,10 +2,10 @@
 
 Prompt-only test-time speaker adaptation for cross-lingual F5-TTS voice cloning.
 
-This repository contains the code, scripts, compact result tables, and final
-paper-writing materials from the CycleAdapt-TTS experiment series.  Large
-datasets, generated audio, checkpoints, logs, and local caches are intentionally
-excluded from git.
+This repository contains the code, scripts, final adapter checkpoints, exact
+eval-set JSONLs, compact result tables, and final paper-writing materials from
+the CycleAdapt-TTS experiment series.  Large raw datasets, generated audio,
+logs, and local caches are intentionally excluded from git.
 
 ## Current Scientific Takeaway
 
@@ -41,7 +41,8 @@ Stress tests are stronger:
   - F5 + rerank: SIM-o `0.792`, ASR-Err `1.274`
   - CycleAdapt-Final: SIM-o `0.799`, ASR-Err `1.051`
 
-The paper-ready results live in [`docs/final`](docs/final).
+The paper-ready results live in [`docs/final`](docs/final).  A more discursive
+research dossier lives in [`docs/results`](docs/results).
 
 ## Repository Layout
 
@@ -56,11 +57,18 @@ The paper-ready results live in [`docs/final`](docs/final).
 Excluded from git:
 
 - `data/`
-- `checkpoints/`
+- intermediate checkpoint steps under `checkpoints/*/step*.pt`
 - `logs/`
 - `results/audio/`
 - `results/prompts/`
 - `.venv/`
+
+Tracked for reproducibility:
+
+- `checkpoints/*/final.pt`
+- `results/eval_set*.jsonl`
+- `results/scores/`
+- `results/tables/`
 
 ## Quick Start
 
@@ -92,16 +100,24 @@ The project expects:
 - FLEURS for multilingual held-out prompts/texts.
 - VCTK for English held-out prompt speakers.
 
-Use:
+Fast Hugging Face path:
 
 ```bash
-bash scripts/01a_download_data.sh
+python scripts/01a_download_hf.py --datasets vctk aishell3 libritts_r fleurs
 python scripts/02_prepare_vctk_fleurs.py
 python scripts/03_build_manifests.py
 ```
 
-Some environments use Hugging Face cache paths and pre-extracted FLEURS files;
-see [`JUMPOFF.md`](JUMPOFF.md) for the detailed expected layout.
+Direct OpenSLR path:
+
+```bash
+bash scripts/01a_download_data.sh
+python scripts/03_build_manifests.py
+```
+
+The exact eval splits used in the reported runs are tracked under
+`results/eval_set*.jsonl`.  See [`JUMPOFF.md`](JUMPOFF.md) for the detailed
+expected layout and download notes.
 
 ## Main Reproduction Scripts
 

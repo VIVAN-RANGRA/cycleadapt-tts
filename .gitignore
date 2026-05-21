@@ -8,19 +8,22 @@ __pycache__/
 
 # Large or machine-local artifacts
 data/
-checkpoints/
+checkpoints/*
+!checkpoints/*/
+!checkpoints/*/final.pt
 logs/
 *.pt
 *.pth
 *.ckpt
 *.safetensors
+!checkpoints/*/final.pt
 
 # Generated audio and prompt perturbations
 results/audio/
 results/audio_samples/
 results/*.wav
 results/prompts/
-results/eval_set*.jsonl
+!results/eval_set*.jsonl
 
 # Keep compact result artifacts, but ignore stale/debug dumps.
 results/scores/stale_oom_*/
