@@ -1,0 +1,16 @@
+Baseline,Metric,n,mean_delta,wins
+F5-TTS,simwavlm,175,+0.0083,95
+F5-TTS,simecapa,175,+0.0056,91
+F5-TTS,wer,175,+0.0253,78
+F5-TTS,f0pcc,144,-0.0068,72
+F5-TTS,utmos,175,+0.0135,91
+F5 + verifier/ASR rerank,simwavlm,175,+0.0019,91
+F5 + verifier/ASR rerank,simecapa,175,+0.0032,97
+F5 + verifier/ASR rerank,wer,175,+0.1429,59
+F5 + verifier/ASR rerank,f0pcc,142,+0.0045,75
+F5 + verifier/ASR rerank,utmos,174,+0.0194,95
+Identity-only final,simwavlm,175,-0.0010,79
+Identity-only final,simecapa,175,+0.0013,87
+Identity-only final,wer,175,+0.0565,64
+Identity-only final,f0pcc,142,+0.0223,76
+Identity-only final,utmos,174,+0.0040,87

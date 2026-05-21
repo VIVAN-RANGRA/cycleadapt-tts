@@ -1,0 +1,60 @@
+# CycleAdapt-TTS dependencies
+# Install order matters: torch first, then F5-TTS, then the rest.
+
+# Core
+numpy<2.0
+scipy
+einops
+omegaconf
+hydra-core
+tqdm
+soundfile
+librosa>=0.10
+resampy
+
+# Logging / experiment tracking
+wandb
+tensorboard
+matplotlib
+seaborn
+pandas
+
+# Audio augmentation (Exp 6, optional)
+audiomentations
+
+# HF datasets / streaming
+datasets>=2.18
+huggingface_hub
+transformers>=4.41
+accelerate
+
+# Speaker encoders
+speechbrain
+resemblyzer
+
+# F0 / prosody
+torchcrepe       # torch-native CREPE (faster than `crepe` PyPI)
+
+# ASR / metrics
+faster-whisper   # 4x faster than openai-whisper; same accuracy
+jiwer            # WER/CER
+
+# DTW for F0 alignment
+dtw-python
+
+# Stats
+statsmodels
+
+# Notebook-friendly
+ipython
+
+# F5-TTS upstream dependencies
+vocos
+x-transformers
+torchdiffeq
+ema-pytorch
+unidecode
+pypinyin
+jieba
+zhconv
+cached_path

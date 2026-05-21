@@ -1,0 +1,57 @@
+Bucket,Method,n,simwavlm,simecapa,wer,f0pcc,utmos
+all,F5-TTS,175,0.8931,0.5410,1.1745,0.0637,1.5407
+all,F5 + verifier/ASR rerank,175,0.8995,0.5434,1.0569,0.0484,1.5368
+all,CycleAdapt-Final,175,0.9014,0.5467,1.1998,0.0622,1.5542
+all,Identity-only final,175,0.9024,0.5454,1.1433,0.0225,1.5522
+zero-shot,F5-TTS,125,0.8898,0.5279,1.2581,0.0875,1.5415
+zero-shot,F5 + verifier/ASR rerank,125,0.8910,0.5225,1.1768,0.0635,1.5168
+zero-shot,CycleAdapt-Final,125,0.8943,0.5257,1.3245,0.0792,1.5382
+zero-shot,Identity-only final,125,0.8948,0.5254,1.2216,0.0355,1.5464
+in-distrib,F5-TTS,50,0.9013,0.5740,0.9655,0.0036,1.5389
+in-distrib,F5 + verifier/ASR rerank,50,0.9206,0.5958,0.7571,0.0119,1.5862
+in-distrib,CycleAdapt-Final,50,0.9190,0.5990,0.8881,0.0181,1.5943
+in-distrib,Identity-only final,50,0.9215,0.5953,0.9475,-0.0102,1.5665
+low_f5_wavlm_q25,F5-TTS,44,0.8243,0.4481,1.2102,0.0835,1.4417
+low_f5_wavlm_q25,F5 + verifier/ASR rerank,44,0.8711,0.4682,1.1548,0.0314,1.4534
+low_f5_wavlm_q25,CycleAdapt-Final,44,0.8722,0.4749,1.0648,0.0923,1.4805
+low_f5_wavlm_q25,Identity-only final,44,0.8746,0.4669,1.1624,-0.0052,1.4768
+low_f5_ecapa_q25,F5-TTS,44,0.8617,0.3273,1.1955,0.0287,1.1616
+low_f5_ecapa_q25,F5 + verifier/ASR rerank,44,0.8841,0.3581,1.2130,-0.0317,1.2558
+low_f5_ecapa_q25,CycleAdapt-Final,44,0.8884,0.3608,1.4901,-0.0283,1.2729
+low_f5_ecapa_q25,Identity-only final,44,0.8929,0.3694,1.2736,0.0342,1.2617
+high_f5_asr_q75,F5-TTS,44,0.9050,0.5560,1.9461,0.0642,1.5644
+high_f5_asr_q75,F5 + verifier/ASR rerank,44,0.8957,0.5466,1.1878,0.0685,1.5072
+high_f5_asr_q75,CycleAdapt-Final,44,0.8964,0.5579,1.3706,0.0239,1.5554
+high_f5_asr_q75,Identity-only final,44,0.8947,0.5555,1.3102,0.0178,1.5640
+far_zh_hi_ja,F5-TTS,50,0.8793,0.4963,1.2674,0.1130,1.4625
+far_zh_hi_ja,F5 + verifier/ASR rerank,50,0.8759,0.4795,1.2504,0.0173,1.4645
+far_zh_hi_ja,CycleAdapt-Final,50,0.8811,0.4869,1.2301,0.0373,1.4938
+far_zh_hi_ja,Identity-only final,50,0.8832,0.4818,1.1899,0.0246,1.4959
+zh_de,F5-TTS,25,0.8942,0.5502,1.3662,0.0215,1.6177
+zh_de,F5 + verifier/ASR rerank,25,0.8922,0.5624,1.2286,-0.0169,1.5956
+zh_de,CycleAdapt-Final,25,0.8964,0.5594,1.6273,0.0507,1.6060
+zh_de,Identity-only final,25,0.8960,0.5562,1.4069,-0.0478,1.6115
+zh_en,F5-TTS,25,0.8877,0.5414,0.9511,0.0698,1.5932
+zh_en,F5 + verifier/ASR rerank,25,0.9155,0.5702,0.7614,0.0655,1.5826
+zh_en,CycleAdapt-Final,25,0.9142,0.5757,0.9379,0.0363,1.5696
+zh_en,Identity-only final,25,0.9164,0.5669,1.1581,0.0232,1.5821
+zh_es,F5-TTS,25,0.8950,0.5527,1.1337,0.1376,1.5658
+zh_es,F5 + verifier/ASR rerank,25,0.9092,0.5537,1.0489,0.0839,1.5242
+zh_es,CycleAdapt-Final,25,0.9123,0.5612,1.0785,0.1214,1.5150
+zh_es,Identity-only final,25,0.9107,0.5635,1.1328,0.0672,1.5561
+zh_fr,F5-TTS,25,0.9014,0.5439,1.2557,0.0489,1.5988
+zh_fr,F5 + verifier/ASR rerank,25,0.9017,0.5375,1.1059,0.2055,1.5383
+zh_fr,CycleAdapt-Final,25,0.9008,0.5342,1.4565,0.1385,1.5826
+zh_fr,Identity-only final,25,0.9011,0.5438,1.1882,0.1031,1.5753
+zh_hi,F5-TTS,25,0.8821,0.5017,1.5074,0.0794,1.3957
+zh_hi,F5 + verifier/ASR rerank,25,0.8778,0.4802,1.4471,0.0120,1.3543
+zh_hi,CycleAdapt-Final,25,0.8832,0.4965,1.4346,0.0417,1.4450
+zh_hi,Identity-only final,25,0.8841,0.4920,1.4325,0.0200,1.4407
+zh_ja,F5-TTS,25,0.8764,0.4909,1.0274,0.1465,1.5294
+zh_ja,F5 + verifier/ASR rerank,25,0.8740,0.4788,1.0538,0.0223,1.5748
+zh_ja,CycleAdapt-Final,25,0.8791,0.4774,1.0255,0.0329,1.5426
+zh_ja,Identity-only final,25,0.8822,0.4717,0.9473,0.0292,1.5511
+zh_zh,F5-TTS,25,0.9149,0.6065,0.9800,-0.0568,1.4846
+zh_zh,F5 + verifier/ASR rerank,25,0.9257,0.6213,0.7528,-0.0441,1.5899
+zh_zh,CycleAdapt-Final,25,0.9238,0.6222,0.8384,-0.0009,1.6190
+zh_zh,Identity-only final,25,0.9265,0.6238,0.7369,-0.0471,1.5508

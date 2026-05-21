@@ -1,0 +1,284 @@
+# Failure-bucket paired deltas
+
+| Bucket | Method | Baseline | Metric | n | mean_benefit | ci95_lo | ci95_hi | wins |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| all | CycleAdapt-Final | F5-TTS | simwavlm | 175 | 0.0083 | -0.0003 | 0.0174 | 95 |
+| all | CycleAdapt-Final | F5-TTS | simecapa | 175 | 0.0056 | -0.0074 | 0.0183 | 91 |
+| all | CycleAdapt-Final | F5-TTS | wer | 175 | -0.0253 | -0.1482 | 0.0959 | 78 |
+| all | CycleAdapt-Final | F5-TTS | f0pcc | 144 | -0.0068 | -0.0647 | 0.0525 | 72 |
+| all | CycleAdapt-Final | F5-TTS | utmos | 175 | 0.0135 | -0.0260 | 0.0520 | 91 |
+| all | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 175 | 0.0019 | -0.0003 | 0.0044 | 91 |
+| all | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 175 | 0.0032 | -0.0023 | 0.0088 | 97 |
+| all | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 175 | -0.1429 | -0.2523 | -0.0466 | 59 |
+| all | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 142 | 0.0045 | -0.0384 | 0.0495 | 75 |
+| all | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 174 | 0.0194 | -0.0022 | 0.0414 | 95 |
+| all | Identity-only final | F5-TTS | simwavlm | 175 | 0.0093 | 0.0005 | 0.0191 | 100 |
+| all | Identity-only final | F5-TTS | simecapa | 175 | 0.0044 | -0.0084 | 0.0173 | 92 |
+| all | Identity-only final | F5-TTS | wer | 175 | 0.0312 | -0.0722 | 0.1337 | 85 |
+| all | Identity-only final | F5-TTS | f0pcc | 143 | -0.0391 | -0.0924 | 0.0175 | 68 |
+| all | Identity-only final | F5-TTS | utmos | 174 | 0.0097 | -0.0333 | 0.0501 | 92 |
+| all | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 175 | 0.0030 | 0.0003 | 0.0056 | 98 |
+| all | Identity-only final | F5 + verifier/ASR rerank | simecapa | 175 | 0.0019 | -0.0047 | 0.0084 | 100 |
+| all | Identity-only final | F5 + verifier/ASR rerank | wer | 175 | -0.0863 | -0.1707 | -0.0108 | 66 |
+| all | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 143 | -0.0186 | -0.0651 | 0.0277 | 70 |
+| all | Identity-only final | F5 + verifier/ASR rerank | utmos | 174 | 0.0154 | -0.0088 | 0.0400 | 89 |
+| zero-shot | CycleAdapt-Final | F5-TTS | simwavlm | 125 | 0.0045 | -0.0049 | 0.0139 | 65 |
+| zero-shot | CycleAdapt-Final | F5-TTS | simecapa | 125 | -0.0021 | -0.0183 | 0.0140 | 62 |
+| zero-shot | CycleAdapt-Final | F5-TTS | wer | 125 | -0.0664 | -0.2267 | 0.0720 | 51 |
+| zero-shot | CycleAdapt-Final | F5-TTS | f0pcc | 103 | -0.0112 | -0.0818 | 0.0592 | 50 |
+| zero-shot | CycleAdapt-Final | F5-TTS | utmos | 125 | -0.0032 | -0.0514 | 0.0440 | 59 |
+| zero-shot | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 125 | 0.0033 | 0.0004 | 0.0065 | 67 |
+| zero-shot | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 125 | 0.0032 | -0.0038 | 0.0107 | 72 |
+| zero-shot | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 125 | -0.1476 | -0.2938 | -0.0281 | 42 |
+| zero-shot | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 101 | 0.0063 | -0.0477 | 0.0643 | 52 |
+| zero-shot | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 124 | 0.0240 | -0.0006 | 0.0499 | 68 |
+| zero-shot | Identity-only final | F5-TTS | simwavlm | 125 | 0.0050 | -0.0044 | 0.0148 | 68 |
+| zero-shot | Identity-only final | F5-TTS | simecapa | 125 | -0.0024 | -0.0186 | 0.0134 | 61 |
+| zero-shot | Identity-only final | F5-TTS | wer | 125 | 0.0365 | -0.0842 | 0.1586 | 55 |
+| zero-shot | Identity-only final | F5-TTS | f0pcc | 103 | -0.0507 | -0.1116 | 0.0144 | 47 |
+| zero-shot | Identity-only final | F5-TTS | utmos | 124 | 0.0025 | -0.0495 | 0.0544 | 63 |
+| zero-shot | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 125 | 0.0038 | 0.0002 | 0.0073 | 70 |
+| zero-shot | Identity-only final | F5 + verifier/ASR rerank | simecapa | 125 | 0.0029 | -0.0062 | 0.0119 | 78 |
+| zero-shot | Identity-only final | F5 + verifier/ASR rerank | wer | 125 | -0.0447 | -0.1310 | 0.0394 | 45 |
+| zero-shot | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 102 | -0.0215 | -0.0837 | 0.0415 | 47 |
+| zero-shot | Identity-only final | F5 + verifier/ASR rerank | utmos | 124 | 0.0296 | 0.0019 | 0.0571 | 67 |
+| in-distrib | CycleAdapt-Final | F5-TTS | simwavlm | 50 | 0.0177 | 0.0022 | 0.0404 | 30 |
+| in-distrib | CycleAdapt-Final | F5-TTS | simecapa | 50 | 0.0250 | 0.0054 | 0.0455 | 29 |
+| in-distrib | CycleAdapt-Final | F5-TTS | wer | 50 | 0.0774 | -0.1458 | 0.2747 | 27 |
+| in-distrib | CycleAdapt-Final | F5-TTS | f0pcc | 41 | 0.0043 | -0.1130 | 0.1212 | 22 |
+| in-distrib | CycleAdapt-Final | F5-TTS | utmos | 50 | 0.0554 | -0.0109 | 0.1246 | 32 |
+| in-distrib | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 50 | -0.0016 | -0.0047 | 0.0013 | 24 |
+| in-distrib | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 50 | 0.0032 | -0.0041 | 0.0107 | 25 |
+| in-distrib | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 50 | -0.1310 | -0.2917 | 0.0001 | 17 |
+| in-distrib | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 41 | -0.0001 | -0.0694 | 0.0678 | 23 |
+| in-distrib | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 50 | 0.0081 | -0.0342 | 0.0539 | 27 |
+| in-distrib | Identity-only final | F5-TTS | simwavlm | 50 | 0.0202 | 0.0039 | 0.0454 | 32 |
+| in-distrib | Identity-only final | F5-TTS | simecapa | 50 | 0.0214 | 0.0011 | 0.0421 | 31 |
+| in-distrib | Identity-only final | F5-TTS | wer | 50 | 0.0180 | -0.2100 | 0.2209 | 30 |
+| in-distrib | Identity-only final | F5-TTS | f0pcc | 40 | -0.0092 | -0.1100 | 0.0814 | 21 |
+| in-distrib | Identity-only final | F5-TTS | utmos | 50 | 0.0276 | -0.0413 | 0.0977 | 29 |
+| in-distrib | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 50 | 0.0008 | -0.0023 | 0.0040 | 28 |
+| in-distrib | Identity-only final | F5 + verifier/ASR rerank | simecapa | 50 | -0.0004 | -0.0077 | 0.0072 | 22 |
+| in-distrib | Identity-only final | F5 + verifier/ASR rerank | wer | 50 | -0.1904 | -0.3698 | -0.0310 | 21 |
+| in-distrib | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 41 | -0.0116 | -0.0657 | 0.0418 | 23 |
+| in-distrib | Identity-only final | F5 + verifier/ASR rerank | utmos | 50 | -0.0198 | -0.0693 | 0.0303 | 22 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5-TTS | simwavlm | 44 | 0.0479 | 0.0237 | 0.0754 | 32 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5-TTS | simecapa | 44 | 0.0268 | -0.0058 | 0.0608 | 23 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5-TTS | wer | 44 | 0.1454 | -0.0154 | 0.3477 | 18 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5-TTS | f0pcc | 30 | 0.0075 | -0.1556 | 0.1802 | 14 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5-TTS | utmos | 44 | 0.0388 | -0.0499 | 0.1274 | 25 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 44 | 0.0012 | -0.0054 | 0.0080 | 21 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 44 | 0.0067 | -0.0060 | 0.0224 | 26 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 44 | 0.0900 | -0.0242 | 0.2048 | 18 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 28 | 0.0686 | -0.0598 | 0.2263 | 16 |
+| low_f5_wavlm_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 44 | 0.0271 | -0.0138 | 0.0684 | 27 |
+| low_f5_wavlm_q25 | Identity-only final | F5-TTS | simwavlm | 44 | 0.0503 | 0.0253 | 0.0798 | 31 |
+| low_f5_wavlm_q25 | Identity-only final | F5-TTS | simecapa | 44 | 0.0189 | -0.0136 | 0.0532 | 21 |
+| low_f5_wavlm_q25 | Identity-only final | F5-TTS | wer | 44 | 0.0478 | -0.1396 | 0.2937 | 20 |
+| low_f5_wavlm_q25 | Identity-only final | F5-TTS | f0pcc | 28 | -0.1369 | -0.2764 | -0.0053 | 8 |
+| low_f5_wavlm_q25 | Identity-only final | F5-TTS | utmos | 44 | 0.0350 | -0.0682 | 0.1397 | 26 |
+| low_f5_wavlm_q25 | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 44 | 0.0035 | -0.0028 | 0.0104 | 24 |
+| low_f5_wavlm_q25 | Identity-only final | F5 + verifier/ASR rerank | simecapa | 44 | -0.0013 | -0.0159 | 0.0145 | 21 |
+| low_f5_wavlm_q25 | Identity-only final | F5 + verifier/ASR rerank | wer | 44 | -0.0077 | -0.1483 | 0.1273 | 20 |
+| low_f5_wavlm_q25 | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 29 | -0.0345 | -0.1521 | 0.1009 | 12 |
+| low_f5_wavlm_q25 | Identity-only final | F5 + verifier/ASR rerank | utmos | 44 | 0.0233 | -0.0305 | 0.0783 | 24 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5-TTS | simwavlm | 44 | 0.0267 | -0.0005 | 0.0565 | 25 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5-TTS | simecapa | 44 | 0.0335 | 0.0020 | 0.0655 | 25 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5-TTS | wer | 44 | -0.2946 | -0.6342 | 0.0015 | 16 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5-TTS | f0pcc | 19 | -0.1018 | -0.3345 | 0.1354 | 9 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5-TTS | utmos | 44 | 0.1114 | 0.0508 | 0.1816 | 35 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 44 | 0.0043 | -0.0022 | 0.0113 | 23 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 44 | 0.0027 | -0.0123 | 0.0202 | 22 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 44 | -0.2770 | -0.6140 | -0.0138 | 17 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 19 | 0.0046 | -0.1718 | 0.2282 | 9 |
+| low_f5_ecapa_q25 | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 44 | 0.0171 | -0.0240 | 0.0565 | 23 |
+| low_f5_ecapa_q25 | Identity-only final | F5-TTS | simwavlm | 44 | 0.0312 | 0.0036 | 0.0627 | 24 |
+| low_f5_ecapa_q25 | Identity-only final | F5-TTS | simecapa | 44 | 0.0421 | 0.0114 | 0.0734 | 28 |
+| low_f5_ecapa_q25 | Identity-only final | F5-TTS | wer | 44 | -0.0781 | -0.2619 | 0.1146 | 20 |
+| low_f5_ecapa_q25 | Identity-only final | F5-TTS | f0pcc | 18 | 0.0314 | -0.1474 | 0.2227 | 7 |
+| low_f5_ecapa_q25 | Identity-only final | F5-TTS | utmos | 44 | 0.1001 | 0.0345 | 0.1746 | 34 |
+| low_f5_ecapa_q25 | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 44 | 0.0088 | 0.0025 | 0.0159 | 27 |
+| low_f5_ecapa_q25 | Identity-only final | F5 + verifier/ASR rerank | simecapa | 44 | 0.0113 | -0.0025 | 0.0271 | 25 |
+| low_f5_ecapa_q25 | Identity-only final | F5 + verifier/ASR rerank | wer | 44 | -0.0606 | -0.2411 | 0.1228 | 18 |
+| low_f5_ecapa_q25 | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 19 | 0.0774 | -0.0787 | 0.2583 | 12 |
+| low_f5_ecapa_q25 | Identity-only final | F5 + verifier/ASR rerank | utmos | 44 | 0.0059 | -0.0326 | 0.0428 | 21 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5-TTS | simwavlm | 44 | -0.0086 | -0.0224 | 0.0036 | 21 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5-TTS | simecapa | 44 | 0.0019 | -0.0291 | 0.0348 | 22 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5-TTS | wer | 44 | 0.5755 | 0.2522 | 0.8545 | 35 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5-TTS | f0pcc | 37 | -0.0597 | -0.1818 | 0.0602 | 18 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5-TTS | utmos | 44 | -0.0090 | -0.0972 | 0.0808 | 20 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 44 | 0.0008 | -0.0027 | 0.0041 | 22 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 44 | 0.0113 | -0.0026 | 0.0276 | 25 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 44 | -0.1828 | -0.4602 | 0.0026 | 15 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 36 | -0.0278 | -0.1192 | 0.0625 | 18 |
+| high_f5_asr_q75 | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 44 | 0.0482 | 0.0076 | 0.0925 | 28 |
+| high_f5_asr_q75 | Identity-only final | F5-TTS | simwavlm | 44 | -0.0104 | -0.0241 | 0.0022 | 20 |
+| high_f5_asr_q75 | Identity-only final | F5-TTS | simecapa | 44 | -0.0005 | -0.0305 | 0.0308 | 18 |
+| high_f5_asr_q75 | Identity-only final | F5-TTS | wer | 44 | 0.6359 | 0.3964 | 0.8877 | 34 |
+| high_f5_asr_q75 | Identity-only final | F5-TTS | f0pcc | 35 | -0.0181 | -0.1053 | 0.0658 | 21 |
+| high_f5_asr_q75 | Identity-only final | F5-TTS | utmos | 44 | -0.0004 | -0.0908 | 0.0917 | 23 |
+| high_f5_asr_q75 | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 44 | -0.0010 | -0.0060 | 0.0035 | 23 |
+| high_f5_asr_q75 | Identity-only final | F5 + verifier/ASR rerank | simecapa | 44 | 0.0089 | -0.0081 | 0.0262 | 22 |
+| high_f5_asr_q75 | Identity-only final | F5 + verifier/ASR rerank | wer | 44 | -0.1224 | -0.2758 | 0.0412 | 15 |
+| high_f5_asr_q75 | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 34 | -0.0187 | -0.1336 | 0.1003 | 17 |
+| high_f5_asr_q75 | Identity-only final | F5 + verifier/ASR rerank | utmos | 44 | 0.0568 | 0.0096 | 0.0997 | 29 |
+| far_zh_hi_ja | CycleAdapt-Final | F5-TTS | simwavlm | 50 | 0.0019 | -0.0138 | 0.0174 | 23 |
+| far_zh_hi_ja | CycleAdapt-Final | F5-TTS | simecapa | 50 | -0.0093 | -0.0344 | 0.0148 | 23 |
+| far_zh_hi_ja | CycleAdapt-Final | F5-TTS | wer | 50 | 0.0373 | -0.1160 | 0.1916 | 23 |
+| far_zh_hi_ja | CycleAdapt-Final | F5-TTS | f0pcc | 39 | -0.0729 | -0.2128 | 0.0628 | 17 |
+| far_zh_hi_ja | CycleAdapt-Final | F5-TTS | utmos | 50 | 0.0313 | -0.0485 | 0.1088 | 29 |
+| far_zh_hi_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 50 | 0.0052 | 0.0001 | 0.0105 | 29 |
+| far_zh_hi_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 50 | 0.0074 | -0.0051 | 0.0215 | 32 |
+| far_zh_hi_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 50 | 0.0204 | -0.1056 | 0.1449 | 23 |
+| far_zh_hi_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 37 | 0.0184 | -0.1028 | 0.1454 | 19 |
+| far_zh_hi_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 50 | 0.0293 | -0.0036 | 0.0649 | 28 |
+| far_zh_hi_ja | Identity-only final | F5-TTS | simwavlm | 50 | 0.0039 | -0.0119 | 0.0200 | 26 |
+| far_zh_hi_ja | Identity-only final | F5-TTS | simecapa | 50 | -0.0145 | -0.0398 | 0.0110 | 22 |
+| far_zh_hi_ja | Identity-only final | F5-TTS | wer | 50 | 0.0775 | -0.0568 | 0.2105 | 24 |
+| far_zh_hi_ja | Identity-only final | F5-TTS | f0pcc | 38 | -0.0796 | -0.1885 | 0.0362 | 15 |
+| far_zh_hi_ja | Identity-only final | F5-TTS | utmos | 50 | 0.0334 | -0.0470 | 0.1109 | 30 |
+| far_zh_hi_ja | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 50 | 0.0072 | 0.0019 | 0.0127 | 33 |
+| far_zh_hi_ja | Identity-only final | F5 + verifier/ASR rerank | simecapa | 50 | 0.0023 | -0.0125 | 0.0179 | 32 |
+| far_zh_hi_ja | Identity-only final | F5 + verifier/ASR rerank | wer | 50 | 0.0605 | -0.0723 | 0.1995 | 24 |
+| far_zh_hi_ja | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 36 | 0.0195 | -0.1040 | 0.1472 | 18 |
+| far_zh_hi_ja | Identity-only final | F5 + verifier/ASR rerank | utmos | 50 | 0.0314 | -0.0085 | 0.0735 | 29 |
+| zh_de | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0021 | -0.0147 | 0.0203 | 15 |
+| zh_de | CycleAdapt-Final | F5-TTS | simecapa | 25 | 0.0092 | -0.0263 | 0.0447 | 13 |
+| zh_de | CycleAdapt-Final | F5-TTS | wer | 25 | -0.2611 | -0.7284 | 0.1796 | 9 |
+| zh_de | CycleAdapt-Final | F5-TTS | f0pcc | 19 | 0.0507 | -0.0889 | 0.1861 | 9 |
+| zh_de | CycleAdapt-Final | F5-TTS | utmos | 25 | -0.0116 | -0.0943 | 0.0802 | 10 |
+| zh_de | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0041 | -0.0022 | 0.0113 | 15 |
+| zh_de | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0030 | -0.0168 | 0.0104 | 13 |
+| zh_de | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | -0.3986 | -0.8463 | -0.0705 | 8 |
+| zh_de | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 20 | 0.0464 | -0.0164 | 0.1158 | 11 |
+| zh_de | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 24 | 0.0265 | -0.0182 | 0.0774 | 17 |
+| zh_de | Identity-only final | F5-TTS | simwavlm | 25 | 0.0018 | -0.0154 | 0.0205 | 14 |
+| zh_de | Identity-only final | F5-TTS | simecapa | 25 | 0.0060 | -0.0336 | 0.0451 | 13 |
+| zh_de | Identity-only final | F5-TTS | wer | 25 | -0.0407 | -0.4468 | 0.3800 | 11 |
+| zh_de | Identity-only final | F5-TTS | f0pcc | 20 | -0.0662 | -0.2468 | 0.0929 | 10 |
+| zh_de | Identity-only final | F5-TTS | utmos | 24 | -0.0218 | -0.1346 | 0.1004 | 12 |
+| zh_de | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0038 | -0.0046 | 0.0122 | 16 |
+| zh_de | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0062 | -0.0268 | 0.0166 | 11 |
+| zh_de | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | -0.1783 | -0.4256 | 0.0419 | 7 |
+| zh_de | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 21 | -0.0193 | -0.1433 | 0.1109 | 9 |
+| zh_de | Identity-only final | F5 + verifier/ASR rerank | utmos | 24 | 0.0159 | -0.0602 | 0.0870 | 14 |
+| zh_en | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0265 | 0.0006 | 0.0705 | 16 |
+| zh_en | CycleAdapt-Final | F5-TTS | simecapa | 25 | 0.0343 | 0.0014 | 0.0660 | 15 |
+| zh_en | CycleAdapt-Final | F5-TTS | wer | 25 | 0.0132 | -0.3539 | 0.3747 | 11 |
+| zh_en | CycleAdapt-Final | F5-TTS | f0pcc | 21 | -0.0335 | -0.2010 | 0.1034 | 13 |
+| zh_en | CycleAdapt-Final | F5-TTS | utmos | 25 | -0.0236 | -0.1064 | 0.0573 | 13 |
+| zh_en | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | -0.0013 | -0.0069 | 0.0030 | 12 |
+| zh_en | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0054 | -0.0039 | 0.0153 | 14 |
+| zh_en | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | -0.1766 | -0.4496 | 0.0928 | 10 |
+| zh_en | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 21 | -0.0309 | -0.1270 | 0.0501 | 12 |
+| zh_en | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | -0.0130 | -0.0608 | 0.0332 | 13 |
+| zh_en | Identity-only final | F5-TTS | simwavlm | 25 | 0.0288 | 0.0007 | 0.0762 | 15 |
+| zh_en | Identity-only final | F5-TTS | simecapa | 25 | 0.0255 | -0.0080 | 0.0587 | 15 |
+| zh_en | Identity-only final | F5-TTS | wer | 25 | -0.2069 | -0.6027 | 0.1862 | 9 |
+| zh_en | Identity-only final | F5-TTS | f0pcc | 20 | 0.0094 | -0.1488 | 0.1501 | 11 |
+| zh_en | Identity-only final | F5-TTS | utmos | 25 | -0.0111 | -0.1083 | 0.0770 | 15 |
+| zh_en | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0009 | -0.0031 | 0.0047 | 13 |
+| zh_en | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0034 | -0.0149 | 0.0078 | 10 |
+| zh_en | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | -0.3967 | -0.7367 | -0.0855 | 6 |
+| zh_en | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 21 | -0.0124 | -0.0955 | 0.0705 | 12 |
+| zh_en | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | -0.0005 | -0.0494 | 0.0446 | 14 |
+| zh_es | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0173 | 0.0007 | 0.0392 | 15 |
+| zh_es | CycleAdapt-Final | F5-TTS | simecapa | 25 | 0.0085 | -0.0184 | 0.0382 | 14 |
+| zh_es | CycleAdapt-Final | F5-TTS | wer | 25 | 0.0553 | -0.1228 | 0.2629 | 10 |
+| zh_es | CycleAdapt-Final | F5-TTS | f0pcc | 23 | -0.0162 | -0.1580 | 0.1103 | 10 |
+| zh_es | CycleAdapt-Final | F5-TTS | utmos | 25 | -0.0508 | -0.1386 | 0.0295 | 11 |
+| zh_es | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0031 | -0.0032 | 0.0116 | 14 |
+| zh_es | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0075 | -0.0058 | 0.0210 | 16 |
+| zh_es | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | -0.0296 | -0.1664 | 0.1421 | 7 |
+| zh_es | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 23 | 0.0180 | -0.0731 | 0.1137 | 15 |
+| zh_es | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | -0.0092 | -0.0688 | 0.0505 | 10 |
+| zh_es | Identity-only final | F5-TTS | simwavlm | 25 | 0.0157 | -0.0042 | 0.0390 | 17 |
+| zh_es | Identity-only final | F5-TTS | simecapa | 25 | 0.0108 | -0.0150 | 0.0375 | 15 |
+| zh_es | Identity-only final | F5-TTS | wer | 25 | 0.0009 | -0.2257 | 0.2177 | 8 |
+| zh_es | Identity-only final | F5-TTS | f0pcc | 23 | -0.0516 | -0.1712 | 0.0626 | 10 |
+| zh_es | Identity-only final | F5-TTS | utmos | 25 | -0.0096 | -0.1092 | 0.0860 | 14 |
+| zh_es | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0014 | -0.0065 | 0.0120 | 10 |
+| zh_es | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0098 | 0.0007 | 0.0197 | 21 |
+| zh_es | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | -0.0840 | -0.2535 | 0.0776 | 7 |
+| zh_es | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 24 | -0.0167 | -0.1013 | 0.0611 | 12 |
+| zh_es | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | 0.0319 | -0.0076 | 0.0776 | 13 |
+| zh_fr | CycleAdapt-Final | F5-TTS | simwavlm | 25 | -0.0007 | -0.0197 | 0.0206 | 12 |
+| zh_fr | CycleAdapt-Final | F5-TTS | simecapa | 25 | -0.0097 | -0.0503 | 0.0307 | 12 |
+| zh_fr | CycleAdapt-Final | F5-TTS | wer | 25 | -0.2008 | -0.6859 | 0.1706 | 9 |
+| zh_fr | CycleAdapt-Final | F5-TTS | f0pcc | 22 | 0.0497 | -0.0545 | 0.1627 | 14 |
+| zh_fr | CycleAdapt-Final | F5-TTS | utmos | 25 | -0.0163 | -0.1312 | 0.1179 | 9 |
+| zh_fr | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | -0.0009 | -0.0052 | 0.0044 | 9 |
+| zh_fr | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0033 | -0.0188 | 0.0123 | 11 |
+| zh_fr | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | -0.3506 | -0.7950 | -0.0549 | 4 |
+| zh_fr | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 21 | -0.0660 | -0.1496 | 0.0084 | 7 |
+| zh_fr | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | 0.0442 | -0.0197 | 0.1258 | 13 |
+| zh_fr | Identity-only final | F5-TTS | simwavlm | 25 | -0.0004 | -0.0177 | 0.0215 | 11 |
+| zh_fr | Identity-only final | F5-TTS | simecapa | 25 | -0.0001 | -0.0373 | 0.0401 | 11 |
+| zh_fr | Identity-only final | F5-TTS | wer | 25 | 0.0675 | -0.1582 | 0.3168 | 12 |
+| zh_fr | Identity-only final | F5-TTS | f0pcc | 22 | 0.0143 | -0.1023 | 0.1452 | 12 |
+| zh_fr | Identity-only final | F5-TTS | utmos | 25 | -0.0235 | -0.1293 | 0.1009 | 7 |
+| zh_fr | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | -0.0006 | -0.0057 | 0.0057 | 11 |
+| zh_fr | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0063 | -0.0114 | 0.0257 | 14 |
+| zh_fr | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | -0.0823 | -0.2524 | 0.0690 | 7 |
+| zh_fr | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 21 | -0.0992 | -0.2211 | 0.0217 | 8 |
+| zh_fr | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | 0.0370 | -0.0209 | 0.1075 | 11 |
+| zh_hi | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0010 | -0.0198 | 0.0193 | 13 |
+| zh_hi | CycleAdapt-Final | F5-TTS | simecapa | 25 | -0.0051 | -0.0332 | 0.0232 | 11 |
+| zh_hi | CycleAdapt-Final | F5-TTS | wer | 25 | 0.0728 | -0.1792 | 0.3264 | 14 |
+| zh_hi | CycleAdapt-Final | F5-TTS | f0pcc | 20 | -0.0401 | -0.2569 | 0.1667 | 8 |
+| zh_hi | CycleAdapt-Final | F5-TTS | utmos | 25 | 0.0493 | -0.0408 | 0.1338 | 15 |
+| zh_hi | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0054 | -0.0017 | 0.0142 | 14 |
+| zh_hi | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0163 | -0.0035 | 0.0423 | 17 |
+| zh_hi | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | 0.0125 | -0.1873 | 0.2225 | 13 |
+| zh_hi | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 18 | 0.0131 | -0.2194 | 0.2675 | 8 |
+| zh_hi | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | 0.0907 | 0.0450 | 0.1423 | 20 |
+| zh_hi | Identity-only final | F5-TTS | simwavlm | 25 | 0.0020 | -0.0182 | 0.0213 | 14 |
+| zh_hi | Identity-only final | F5-TTS | simecapa | 25 | -0.0097 | -0.0360 | 0.0177 | 10 |
+| zh_hi | Identity-only final | F5-TTS | wer | 25 | 0.0749 | -0.1574 | 0.3287 | 14 |
+| zh_hi | Identity-only final | F5-TTS | f0pcc | 19 | -0.0350 | -0.2056 | 0.1405 | 8 |
+| zh_hi | Identity-only final | F5-TTS | utmos | 25 | 0.0450 | -0.0487 | 0.1341 | 15 |
+| zh_hi | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0063 | -0.0025 | 0.0165 | 15 |
+| zh_hi | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0118 | -0.0096 | 0.0372 | 15 |
+| zh_hi | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | 0.0146 | -0.2047 | 0.2549 | 12 |
+| zh_hi | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 17 | 0.0336 | -0.2139 | 0.2898 | 8 |
+| zh_hi | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | 0.0864 | 0.0367 | 0.1416 | 18 |
+| zh_ja | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0027 | -0.0218 | 0.0283 | 10 |
+| zh_ja | CycleAdapt-Final | F5-TTS | simecapa | 25 | -0.0135 | -0.0524 | 0.0249 | 12 |
+| zh_ja | CycleAdapt-Final | F5-TTS | wer | 25 | 0.0019 | -0.1282 | 0.1486 | 9 |
+| zh_ja | CycleAdapt-Final | F5-TTS | f0pcc | 19 | -0.1075 | -0.2705 | 0.0360 | 9 |
+| zh_ja | CycleAdapt-Final | F5-TTS | utmos | 25 | 0.0132 | -0.1070 | 0.1438 | 14 |
+| zh_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0050 | -0.0008 | 0.0111 | 15 |
+| zh_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0015 | -0.0147 | 0.0085 | 15 |
+| zh_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | 0.0282 | -0.0914 | 0.1721 | 10 |
+| zh_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 19 | 0.0234 | -0.0844 | 0.1268 | 11 |
+| zh_ja | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | -0.0322 | -0.0659 | -0.0048 | 8 |
+| zh_ja | Identity-only final | F5-TTS | simwavlm | 25 | 0.0058 | -0.0196 | 0.0319 | 12 |
+| zh_ja | Identity-only final | F5-TTS | simecapa | 25 | -0.0192 | -0.0589 | 0.0213 | 12 |
+| zh_ja | Identity-only final | F5-TTS | wer | 25 | 0.0801 | -0.0196 | 0.2150 | 10 |
+| zh_ja | Identity-only final | F5-TTS | f0pcc | 19 | -0.1241 | -0.2721 | 0.0115 | 7 |
+| zh_ja | Identity-only final | F5-TTS | utmos | 25 | 0.0217 | -0.1060 | 0.1494 | 15 |
+| zh_ja | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0082 | 0.0033 | 0.0133 | 18 |
+| zh_ja | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | -0.0072 | -0.0266 | 0.0075 | 17 |
+| zh_ja | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | 0.1064 | -0.0098 | 0.2713 | 12 |
+| zh_ja | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 19 | 0.0068 | -0.0590 | 0.0704 | 10 |
+| zh_ja | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | -0.0237 | -0.0757 | 0.0301 | 11 |
+| zh_zh | CycleAdapt-Final | F5-TTS | simwavlm | 25 | 0.0089 | -0.0038 | 0.0211 | 14 |
+| zh_zh | CycleAdapt-Final | F5-TTS | simecapa | 25 | 0.0157 | -0.0109 | 0.0411 | 14 |
+| zh_zh | CycleAdapt-Final | F5-TTS | wer | 25 | 0.1416 | -0.0558 | 0.3496 | 16 |
+| zh_zh | CycleAdapt-Final | F5-TTS | f0pcc | 20 | 0.0440 | -0.1114 | 0.2254 | 9 |
+| zh_zh | CycleAdapt-Final | F5-TTS | utmos | 25 | 0.1344 | 0.0366 | 0.2332 | 19 |
+| zh_zh | CycleAdapt-Final | F5 + verifier/ASR rerank | simwavlm | 25 | -0.0020 | -0.0054 | 0.0011 | 12 |
+| zh_zh | CycleAdapt-Final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0010 | -0.0091 | 0.0119 | 11 |
+| zh_zh | CycleAdapt-Final | F5 + verifier/ASR rerank | wer | 25 | -0.0855 | -0.1906 | 0.0055 | 7 |
+| zh_zh | CycleAdapt-Final | F5 + verifier/ASR rerank | f0pcc | 20 | 0.0324 | -0.0677 | 0.1396 | 11 |
+| zh_zh | CycleAdapt-Final | F5 + verifier/ASR rerank | utmos | 25 | 0.0291 | -0.0452 | 0.1026 | 14 |
+| zh_zh | Identity-only final | F5-TTS | simwavlm | 25 | 0.0116 | -0.0011 | 0.0234 | 17 |
+| zh_zh | Identity-only final | F5-TTS | simecapa | 25 | 0.0172 | -0.0096 | 0.0428 | 16 |
+| zh_zh | Identity-only final | F5-TTS | wer | 25 | 0.2430 | 0.0708 | 0.4450 | 21 |
+| zh_zh | Identity-only final | F5-TTS | f0pcc | 20 | -0.0279 | -0.1324 | 0.0710 | 10 |
+| zh_zh | Identity-only final | F5-TTS | utmos | 25 | 0.0663 | -0.0325 | 0.1644 | 14 |
+| zh_zh | Identity-only final | F5 + verifier/ASR rerank | simwavlm | 25 | 0.0008 | -0.0039 | 0.0054 | 15 |
+| zh_zh | Identity-only final | F5 + verifier/ASR rerank | simecapa | 25 | 0.0025 | -0.0052 | 0.0123 | 12 |
+| zh_zh | Identity-only final | F5 + verifier/ASR rerank | wer | 25 | 0.0159 | -0.0887 | 0.1104 | 15 |
+| zh_zh | Identity-only final | F5 + verifier/ASR rerank | f0pcc | 20 | -0.0107 | -0.0899 | 0.0599 | 11 |
+| zh_zh | Identity-only final | F5 + verifier/ASR rerank | utmos | 25 | -0.0391 | -0.1251 | 0.0420 | 8 |

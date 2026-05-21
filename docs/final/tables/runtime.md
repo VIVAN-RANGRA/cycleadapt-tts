@@ -1,0 +1,8 @@
+# Runtime and inference cost
+
+| Method | n_generated | wall_seconds | seconds_per_item | mean_rtf | K_test | rerank_candidates | rerank_asr_topk | rerank_asr_model |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| F5-TTS | 175 | 234.3766 | 1.3393 | 0.0938 |  |  |  |  |
+| F5 + verifier/ASR rerank | 175 | 3872.3418 | 22.1277 | 1.4804 | 0 | 8 |  |  |
+| CycleAdapt-Final | 175 | 3848.0214 | 21.9887 | 1.5361 | 3 | 8 | 2 | tiny |
+| Identity-only final | 175 | 3667.1069 | 20.9549 | 1.4566 | 3 | 8 | 2 | tiny |

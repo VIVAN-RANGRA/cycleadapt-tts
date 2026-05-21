@@ -1,0 +1,37 @@
+# Python / local environment
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Large or machine-local artifacts
+data/
+checkpoints/
+logs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated audio and prompt perturbations
+results/audio/
+results/audio_samples/
+results/*.wav
+results/prompts/
+results/eval_set*.jsonl
+
+# Keep compact result artifacts, but ignore stale/debug dumps.
+results/scores/stale_oom_*/
+
+# F5-TTS is tracked as an external dependency/submodule target.
+third_party_f5/data/
+third_party_f5/ckpts/
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

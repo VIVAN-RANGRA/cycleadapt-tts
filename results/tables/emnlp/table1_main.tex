@@ -1,0 +1,27 @@
+% Auto-generated EMNLP Table 1
+\begin{tabular}{llcccc}
+\toprule
+Method & Setting & SIM-o & ECAPA & ASR-Err & F0 \\
+\midrule
+F5-TTS (baseline) & in-distrib & 0.887 & 0.584 & 0.579 & 0.134 \\
+F5-TTS (baseline) & zero-shot & 0.890 & 0.566 & 0.983 & 0.103 \\
+F5-TTS + verifier rerank & in-distrib & 0.908 & 0.609 & 0.697 & 0.159 \\
+F5-TTS + verifier rerank & zero-shot & 0.916 & 0.600 & 0.963 & 0.172 \\
+F5 + random LoRA + Adam TTT & in-distrib & 0.882 & 0.556 & 0.632 & 0.171 \\
+F5 + random LoRA + Adam TTT & zero-shot & 0.894 & 0.578 & 0.957 & 0.112 \\
+Meta-init $\theta_0$ only & in-distrib & 0.875 & 0.564 & 0.610 & 0.181 \\
+Meta-init $\theta_0$ only & zero-shot & 0.881 & 0.564 & 0.968 & 0.128 \\
+CycleAdapt w/ learned $\phi$ & in-distrib & 0.905 & 0.573 & 0.571 & 0.091 \\
+CycleAdapt w/ learned $\phi$ & zero-shot & 0.907 & 0.571 & 0.978 & 0.116 \\
+\textbf{CycleAdapt-Final} & in-distrib & 0.910 & 0.609 & 0.581 & 0.119 \\
+\textbf{CycleAdapt-Final} & zero-shot & 0.916 & 0.601 & 0.967 & 0.158 \\
+Identity-only final & in-distrib & 0.909 & 0.609 & 0.655 & 0.114 \\
+Identity-only final & zero-shot & 0.916 & 0.601 & 0.944 & 0.172 \\
+w/o $\phi$ & in-distrib & 0.905 & 0.576 & 0.595 & 0.102 \\
+w/o $\phi$ & zero-shot & 0.908 & 0.567 & 0.935 & 0.092 \\
+w/o cycle & in-distrib & 0.905 & 0.574 & 0.611 & 0.085 \\
+w/o cycle & zero-shot & 0.909 & 0.570 & 0.957 & 0.090 \\
+TTT w/ $\mathcal{L}_{id}$ only & in-distrib & 0.904 & 0.573 & 0.557 & 0.089 \\
+TTT w/ $\mathcal{L}_{id}$ only & zero-shot & 0.910 & 0.565 & 0.960 & 0.115 \\
+\bottomrule
+\end{tabular}
